@@ -39,18 +39,18 @@ function setTable(dict, tbody) {
 	tbody.innerHTML = '';
 	for (const [key, value] of Object.entries(dict)) {
 		let tr = document.createElement('tr');
+		let td = document.createElement('td');
+
+		if (Array.isArray(value)) {
+			td.textContent = value[0];
+		} else {
+			td.textContent = value;
+		}
+
 		tr.innerHTML = `
 <th scope="row">${key}</th>
 `;
-		let th = document.createElement('th');
-
-		if (Array.isArray(value)) {
-			th.innerHTML = `<td>${value[0]}</td>`;
-		} else {
-			th.innerHTML = `<td>${value}</td>`;
-		}
-
-		tr.appendChild(th);
+		tr.appendChild(td);
 
 		tbody.appendChild(tr);	
 	}
