@@ -6,7 +6,7 @@ const tableWeather = document.getElementById("table-weather");
 
 async function getWeather() {
 	const location = inputLocation.value;
-	console.log(`Location: ${location}`)
+	console.log(`Location inpur by user: ${location}`)
 
 	const geocodingApiURL = `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=1&language=en&format=json`
 
@@ -18,7 +18,7 @@ async function getWeather() {
 		const long = geocodingResults.longitude;
 		const lat = geocodingResults.latitude;
 
-		console.log(`${long}, ${lat}`)
+		console.log(`The location has been located to ${lat}, ${long}`)
 
 		setTable(geocodingResults, tableLocation.querySelector("tbody"));
 		
@@ -66,9 +66,7 @@ async function getApiResponse(url) {
       throw new Error(`Response status: ${response.status}`);
     }
 
-    const result = await response.json();
-    console.log(result);
-    return result;
+    return  await response.json();
     
   } catch (error) {
     console.error(error.message);
