@@ -37,6 +37,8 @@ async function getWeather() {
 }
 
 function setTable(dict, tbody) {
+	/* Ensure the table only has entries for one location */
+	tbody.innerHTML = '';
 	for (const [key, value] of Object.entries(dict)) {
 		let tr = document.createElement('tr');
 		tr.innerHTML = `
