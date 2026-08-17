@@ -6,9 +6,9 @@ const tableWeather = document.getElementById("table-weather");
 
 async function getWeather() {
 	const location = inputLocation.value;
-	console.log(`Location inpur by user: ${location}`)
+	console.log(`Location inpur by user: ${location}`);
 
-	const geocodingApiURL = `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=1&language=en&format=json`
+	const geocodingApiURL = `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=1&language=en&format=json`;
 
 	try {
 		const geocodingData = await getApiResponse(geocodingApiURL);
@@ -18,12 +18,11 @@ async function getWeather() {
 		const long = geocodingResults.longitude;
 		const lat = geocodingResults.latitude;
 
-		console.log(`The location has been located to ${lat}, ${long}`)
+		console.log(`The location has been located to ${lat}, ${long}`);
 
 		setTable(geocodingResults, tableLocation.querySelector("tbody"));
 		
-		const weatherApiURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,uv_index_max,weather_code,uv_index_clear_sky_max,sunrise,sunset,daylight_duration,sunshine_duration,moonrise,moonset,moon_phase,rain_sum,showers_sum,snowfall_sum,precipitation_sum,precipitation_hours,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,shortwave_radiation_sum,et0_fao_evapotranspiration&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch`
-
+		const weatherApiURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,uv_index_max,weather_code,uv_index_clear_sky_max,sunrise,sunset,daylight_duration,sunshine_duration,moonrise,moonset,moon_phase,rain_sum,showers_sum,snowfall_sum,precipitation_sum,precipitation_hours,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,shortwave_radiation_sum,et0_fao_evapotranspiration&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch`;
 
 		const weatherData = await getApiResponse(weatherApiURL);
 		console.log("Success, weatherData = ", weatherData);
@@ -47,9 +46,9 @@ function setTable(dict, tbody) {
 		let th = document.createElement('th');
 
 		if (Array.isArray(value)) {
-			th.innerHTML = `<td>${value[0]}</td>`
+			th.innerHTML = `<td>${value[0]}</td>`;
 		} else {
-			th.innerHTML = `<td>${value}</td>`
+			th.innerHTML = `<td>${value}</td>`;
 		}
 
 		tr.appendChild(th);
