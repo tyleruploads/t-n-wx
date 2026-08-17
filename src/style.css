@@ -1,0 +1,139 @@
+:root {
+    --bg-color: #0b0f19;       /* Deep dark navy/charcoal */
+    --card-bg: #161b26;        /* Slightly lighter dark for boxes */
+    --border-color: #262f40;   /* Clean border lines */
+    --text-main: #f3f4f6;      /* Bright off-white */
+    --text-muted: #9ca3af;     /* Gray for secondary text */
+    --accent: #38bdf8;         /* Neon sky blue for links/buttons */
+    --accent-hover: #7dd3fc;
+    --btn-color: #4caf50;      /* Standard bootstrap success green */
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--bg-color);
+
+	background-image: url('logo.svg');
+
+	background-repeat: space;
+	background-size: 10vh;
+}
+
+#div-app {
+	background-color: #000000;
+	padding: 30px;
+	border-radius: 8px;
+}
+
+.verticalGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    min-height: 80px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+
+    box-shadow: 0 0 80px rgba(255, 0, 0, 1)
+}
+
+.horizontalGroup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+
+    min-height: 80px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.horizontalGroup:has(table) {
+	align-items: flex-start;
+}
+
+footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+
+h1, h2, h3, p {
+	color: var(--text-main);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.4)
+}
+
+p {
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+}
+
+span {
+	color: var(--text-main);
+}
+
+input, select, textarea, button {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--accent);
+}
+
+button {
+    background-color: var(--btn-color);
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+    text-shadow: 2px 0 #ff0000, -2px 0 #0000ff;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+  font-variant: tabular-nums;
+  box-shadow: 0 0 80px rgba(0, 255, 0, 1);
+  vertical-align: top;
+}
+
+th, td {
+	color: var(--text-main);
+	border: 3px solid #ccc;
+	padding: 12px;
+	text-align: left;
+}
