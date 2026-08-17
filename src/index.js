@@ -4,8 +4,7 @@ const inputLocation = document.getElementById("input-location");
 const tableLocation = document.getElementById("table-location");
 const tableWeather = document.getElementById("table-weather");
 
-async function getWeather() {
-	const location = inputLocation.value;
+async function getWeather(location) {
 	console.log(`Location inpur by user: ${location}`);
 
 	const geocodingApiURL = `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=1&language=en&format=json`;
@@ -73,4 +72,31 @@ async function getApiResponse(url) {
   }
 }
 
-buttonGetWx.addEventListener("click", getWeather);
+function saveToLocalStorage(key, value) {
+	localStorage.setItem(key, JSON.stringify(value));
+}
+
+function readLocalStorage(key) {
+	const storedData = localStorage.getItem(key);
+	if (storedData) {
+		const parsedData = JSON.parse(storedData);
+		return parsedData;
+	}
+}
+
+function checkForLocation() {
+	const location = readLocalStorage('location');
+
+	if (location) {
+		getWeather(location);
+		inputLocation.value = location;
+	}
+}
+
+buttonGetWx.addEventListener("click", (e) => {
+	const location = inputLocation.value;
+	getWeather(location);
+	saveToLocalStorage('location', location);
+});
+
+document.addEventListener("DOMContentLoaded", checkForLocation());
